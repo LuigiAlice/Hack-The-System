@@ -13,9 +13,12 @@ import HackTheSystem.bot.Bot;
  */
 public class Firewall {
     String secureKey; 
+    SecureSystem secureSystem;
     Bot[] bots; 
-    public Firewall(String key)
+    
+    public Firewall(SecureSystem secureSystem, String key)
     {
+        secureSystem = secureSystem;
 	secureKey = key;
     }
 
@@ -23,8 +26,6 @@ public class Firewall {
         return secureKey;
     }
 
-    
-    
     
     public void hacked(String botKey)
     {

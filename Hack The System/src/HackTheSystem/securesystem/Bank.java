@@ -5,7 +5,6 @@
  */
 package HackTheSystem.securesystem;
 
-import HackTheSystem.securesystem.SecureSystem;
 import java.util.List;
 
 /**
@@ -14,8 +13,5 @@ import java.util.List;
  */
 public class Bank extends SecureSystem {
 
-    public Bank(List<Firewall> wall) {
-        super(wall);
-    }
     
 }

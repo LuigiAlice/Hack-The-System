@@ -7,8 +7,8 @@ package HackTheSystem;
 
 import HackTheSystem.bot.Bot;
 import HackTheSystem.bot.Botnetz;
+import HackTheSystem.securesystem.Bank;
 import HackTheSystem.securesystem.Firewall;
-import HackTheSystem.securesystem.SecureSystem;
 import HackTheSystem.virus.Virus;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +21,23 @@ public class Hacker {
     
     public void hack() throws InterruptedException
     {
-            List<Firewall> wall = new ArrayList<>();
-            wall.add(new Firewall("01011001"));
-            
-            
-            
-            SecureSystem Sys = new SecureSystem(wall);
-            Virus vir = new Virus();
-            List<Bot> bots = new ArrayList<>();
-            for(int i=0; i < 4; i++) bots.add(new Bot(vir));  // der gleiche Virus 4x geshared      
 
-            Botnetz BNet = new Botnetz(bots);
+            
+ 
+            Bank sparkasse = new Bank();
+            sparkasse.addFirewall(new Firewall(sparkasse, "01011001"));           
+            
+            
+            Virus vir = new Virus();    // TODO: Virus gehört zu genau einem Bot
+            
+            Botnetz BNet = new Botnetz("B***tnet/2015");     
+            BNet.setAttackInterval(500);
+            for(int i=0; i < 4; i++) BNet.addBot(new Bot(vir));  // der gleiche Virus 4x geshared      
 
-            BNet.Hack(Sys.getFirewall().get(0));
+            for (Firewall wall : sparkasse.getFirewalls())
+            {
+                BNet.Hack(wall);
+            }
                     
     }
     

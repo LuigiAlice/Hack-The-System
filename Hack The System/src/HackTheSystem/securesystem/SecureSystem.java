@@ -5,29 +5,44 @@
  */
 package HackTheSystem.securesystem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Roolez
  */
-public class SecureSystem {
+abstract class SecureSystem {
     String Bez;
-    List<Firewall> wall;
+    List<Firewall> firewalls = new ArrayList<>();
+    boolean geknackt;
     
-    public SecureSystem(List<Firewall> wall)
-    {
-        this.wall = wall;
-    }
     
     public void getRecources()
     {
     }
 
-    public List<Firewall> getFirewall() {
-        return wall;
+    public void setGeknackt(boolean geknackt) {
+        this.geknackt = geknackt;
+    }
+
+    
+    
+    public boolean isGeknackt() {
+        return geknackt;
+    }
+
+    
+    
+
+    public List<Firewall> getFirewalls() {
+        return firewalls;
     }
     
+        public void addFirewall(Firewall wall)
+    {
+        this.firewalls.add(wall);     
+    }
     
     
 }
