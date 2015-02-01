@@ -9,6 +9,8 @@ import HackTheSystem.bot.Bot;
 import HackTheSystem.bot.Botnetz;
 import HackTheSystem.securesystem.Bank;
 import HackTheSystem.securesystem.Firewall;
+import HackTheSystem.virus.NRVirus;
+import HackTheSystem.virus.RemVirus;
 import HackTheSystem.virus.Virus;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +27,13 @@ public class Hacker {
             
  
             Bank sparkasse = new Bank();
-            sparkasse.addFirewall(new Firewall(sparkasse, "01011001"));           
+            sparkasse.addFirewall(new Firewall(sparkasse, "0101100110101010"));           
             
-            
-            Virus vir = new Virus();    // TODO: Virus gehört zu genau einem Bot
+           
             
             Botnetz BNet = new Botnetz("B***tnet/2015");     
-            BNet.setAttackInterval(500);
-            for(int i=0; i < 4; i++) BNet.addBot(new Bot(vir));  // der gleiche Virus 4x geshared      
+            BNet.setAttackInterval(1);
+            for(int i=0; i < 1; i++) BNet.addBot(new Bot(new NRVirus()));  // der gleiche Virus 4x geshared      
 
             for (Firewall wall : sparkasse.getFirewalls())
             {

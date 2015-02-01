@@ -25,9 +25,11 @@ public class RemVirus extends Virus{
         if("*".equals(keyPattern.substring(i, i+1)))
         {
             key += Integer.toString(rnd.nextInt(2));
-            if(numOfAttk % 50 == 0 && !done)
+            if(numOfAttk % 100 == 0 && !done)
             {
+                done = true;
                 keyPattern = keyPattern.substring(0, i)+ wall.getSecureKey().substring(i, i + 1) + keyPattern.substring(i+1);
+                System.out.println("keyPattern: " + keyPattern);
             }
         }
         else

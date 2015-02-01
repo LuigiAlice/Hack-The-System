@@ -20,14 +20,14 @@ public class Virus {
     int hidden; //Enddeckbarkeit
     int spread; //Ausbreitung
     long numOfAttk;
-    String keyPattern = "********";
+    String keyPattern = "****************";
 
     
     Random rnd = new Random();  
     
     public void init()
     {
-        numOfAttk = 0;
+        numOfAttk = 1;
     }
     
     public String getNextKey(Firewall wall)
