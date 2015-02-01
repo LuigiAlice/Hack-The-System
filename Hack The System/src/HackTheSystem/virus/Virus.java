@@ -19,13 +19,16 @@ public class Virus {
     int raise; //Faktor um wie viel die einahmen im erfolgsfall
     int hidden; //Enddeckbarkeit
     int spread; //Ausbreitung
-    String keyPattern = "*****001";
-    
-    public Virus()
-    {
-    }
+    long numOfAttk;
+    String keyPattern = "********";
+
     
     Random rnd = new Random();  
+    
+    public void init()
+    {
+        numOfAttk = 0;
+    }
     
     public String getNextKey(Firewall wall)
     {
@@ -37,6 +40,7 @@ public class Virus {
         else
             key +=  keyPattern.substring(i, i+1);
       }
+      numOfAttk ++;
       return key;
     }
 }

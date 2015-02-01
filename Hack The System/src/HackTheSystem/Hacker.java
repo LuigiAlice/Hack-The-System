@@ -28,7 +28,7 @@ public class Hacker {
             sparkasse.addFirewall(new Firewall(sparkasse, "01011001"));           
             
             
-            Virus vir = new Virus();    // TODO: Virus gehÃ¶rt zu genau einem Bot
+            Virus vir = new Virus();    // TODO: Virus gehört zu genau einem Bot
             
             Botnetz BNet = new Botnetz("B***tnet/2015");     
             BNet.setAttackInterval(500);

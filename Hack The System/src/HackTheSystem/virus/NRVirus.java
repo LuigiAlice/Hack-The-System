@@ -5,7 +5,9 @@
  */
 package HackTheSystem.virus;
 
+import HackTheSystem.securesystem.Firewall;
 import HackTheSystem.virus.Virus;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,5 +16,27 @@ import java.util.List;
  */
 public class NRVirus extends Virus{
 
+    List <String> triedKeys = new ArrayList<>();
     
+    
+    @Override
+    public String getNextKey(Firewall wall)
+    {
+      String key;
+      do{
+        key = "";
+        for(int i = 0; i < keyPattern.length(); i++)
+        {      
+          if("*".equals(keyPattern.substring(i, i+1)))
+              key += Integer.toString(rnd.nextInt(2));
+          else
+              key +=  keyPattern.substring(i, i+1);
+        }
+      }
+      while(triedKeys.contains(key));
+      
+      numOfAttk ++;
+      triedKeys.add(key);
+      return key;
+    }
 }
