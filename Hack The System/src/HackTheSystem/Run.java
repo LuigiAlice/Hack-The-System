@@ -19,6 +19,9 @@ public class Run {
         Hacker andi = new Hacker();
         
         andi.hack();
+		
+		andi.hack();
+		
     }
     
 }
