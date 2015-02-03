@@ -10,11 +10,15 @@ import HackTheSystem.virus.Virus;
 import java.util.List;
 
 /**
- *RemenberVirus
+ * RememberVirus
  * @author Roolez
  */
-public class RemVirus extends Virus{
+public class RemVirus extends Virus {
 
+    public RemVirus(String keyPattern) {
+        super(keyPattern);
+    }
+    
     @Override
     public String getNextKey(Firewall wall)
     {

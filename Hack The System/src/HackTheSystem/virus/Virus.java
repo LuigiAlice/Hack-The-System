@@ -6,7 +6,6 @@
 package HackTheSystem.virus;
 
 import HackTheSystem.securesystem.Firewall;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -20,17 +19,28 @@ public class Virus {
     int hidden; //Enddeckbarkeit
     int spread; //Ausbreitung
     long numOfAttk;
-    String keyPattern = "****************";
-
-    
+    protected String keyPattern = "*";
     Random rnd = new Random();  
+
+    public Virus(String keyPattern) {
+        this.keyPattern = keyPattern; 
+    }
     
     public void init()
     {
         numOfAttk = 1;
     }
     
-    public String getNextKey(Firewall wall)
+    
+    public String attack(Firewall wall)
+    {
+        if (wall.getSecureKey().length() > this.keyPattern.length())
+            throw new RuntimeException("Virus ist zu schwach für die Firewall");
+        
+        return getNextKey(wall); 
+    }
+    
+    protected String getNextKey(Firewall wall)
     {
       String key = "";
       for(int i = 0; i < keyPattern.length(); i++)

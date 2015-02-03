@@ -16,9 +16,19 @@ abstract class SecureSystem {
     String Bez;
     List<Firewall> firewalls = new ArrayList<>();
     boolean geknackt;
+    private double BotCoins = 0;
     
     
-    public void getRecources()
+    
+    public double getBotCoins() {
+        return BotCoins;
+    }
+
+    public void addBotCoins(double BotCoins) {
+        this.BotCoins += BotCoins;
+    }
+    
+    public void getResources()
     {
     }
 

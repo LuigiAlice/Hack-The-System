@@ -6,19 +6,22 @@
 package HackTheSystem.virus;
 
 import HackTheSystem.securesystem.Firewall;
-import HackTheSystem.virus.Virus;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * NoRepeadVirus
+ * NoRepeatVirus
  * @author Roolez
  */
 public class NRVirus extends Virus{
 
     List <String> triedKeys = new ArrayList<>();
+
+    public NRVirus(String keyPattern) {
+        super(keyPattern);
+    }
     
-    
+     
     @Override
     public String getNextKey(Firewall wall)
     {

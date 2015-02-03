@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author AHellmann
  */
-public class Botnetz {
+public class Botnetz  {
     boolean hacked;
     String botKey;
     List<Bot> bots = new ArrayList<>();
@@ -47,28 +47,48 @@ public class Botnetz {
         this.attackInterval = attackInterval;
     }
     
-         
-    public void Hack(Firewall wall) throws InterruptedException
+    /**
+     * Angriff einer Firewall. Alle Bots im Netz greifen der Reihe nach an.
+     * Dies gilt als quasi paralleler Angriff
+     * @param wall
+     * @throws InterruptedException 
+     */     
+    public Thread hack(Firewall wall)
     {
-	String secureKey = wall.getSecureKey();
-	hacked = false;
-	int j = 0;
-        while(!hacked)
-        {   
-	    for(Bot bot : bots)
-	    {
-		botKey = bot.getNextKey(wall);
-		if(botKey.equals(secureKey))
-		{
-		    hacked = true;
-		    wall.hacked(botKey);
-		    break;
-		}
-		System.out.println(botKey);
-		j++;
-	    }
-	    System.out.println("----------- " + j);            
-            Thread.sleep(getAttackInterval());
-        }
+        Thread t = new Thread()
+        {
+            @Override
+            public void run() {
+                String secureKey = wall.getSecureKey();
+                hacked = false;
+                int j = 0;
+                while(!hacked)
+                {   
+                    for(Bot bot : bots)
+                    {
+                        // Virus hackt Firewall...
+                        botKey = bot.getVirus().attack(wall);
+                        if(botKey.equals(secureKey))
+                        {
+                            hacked = true;
+                            wall.hacked(botKey);
+                            break;
+                        }
+                        System.out.println(botKey);
+                        j++;
+                    }
+                    System.out.println("----------- " + j);            
+                    try {
+                        Thread.sleep(getAttackInterval());
+                    } catch (InterruptedException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }  
+        };
+        
+        t.start();
+	return t;
     }
+
 }

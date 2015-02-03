@@ -13,17 +13,32 @@ import HackTheSystem.virus.Virus;
  * @author Roolez
  */
 public class Bot {
+    private final Botnetz botnetz;
     Virus virus;
     
-    public Bot(Virus virus)
+    /**
+     *
+     * @param botnetz
+     * @param virus
+     */
+    public Bot(Botnetz botnetz, Virus virus)
     {
+        this.botnetz = botnetz;
         this.virus = virus;
     }
     
+   
     
-    public String getNextKey(Firewall wall)
-    {
-      return virus.getNextKey(wall);
-    };
+
+    public Botnetz getBotnetz() {
+        return botnetz;
+    }
+
+    
+    public Virus getVirus() {
+        return virus;
+    }
+    
+    
 
 }

@@ -5,41 +5,34 @@
  */
 package HackTheSystem;
 
-import HackTheSystem.bot.Bot;
-import HackTheSystem.bot.Botnetz;
-import HackTheSystem.securesystem.Bank;
-import HackTheSystem.securesystem.Firewall;
-import HackTheSystem.virus.NRVirus;
-import HackTheSystem.virus.RemVirus;
-import HackTheSystem.virus.Virus;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Roolez
  */
 public class Hacker {
     
-    public void hack() throws InterruptedException
-    {
-
-            
- 
-            Bank sparkasse = new Bank();
-            sparkasse.addFirewall(new Firewall(sparkasse, "0101100110101010"));           
-            
-           
-            
-            Botnetz BNet = new Botnetz("B***tnet/2015");     
-            BNet.setAttackInterval(1);
-            for(int i=0; i < 1; i++) BNet.addBot(new Bot(new NRVirus()));  // der gleiche Virus 4x geshared      
-
-            for (Firewall wall : sparkasse.getFirewalls())
-            {
-                BNet.Hack(wall);
-            }
-                    
+    private double BotCoins = 0;
+    private double InnovationPoints = 0;
+    
+    
+    public double getBotCoins() {
+        return BotCoins;
     }
+
+    public void addBotCoins(double BotCoins) {
+        this.BotCoins += BotCoins;
+    }
+
+    public double getInnovationPoints() {
+        return InnovationPoints;
+    }
+
+    public void addInnovationPoints(double InnovationPoints) {
+        this.InnovationPoints += InnovationPoints;
+    }
+    
+    
+  
+ 
     
 }

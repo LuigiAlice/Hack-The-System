@@ -18,8 +18,8 @@ public class Firewall {
     
     public Firewall(SecureSystem secureSystem, String key)
     {
-        secureSystem = secureSystem;
-	secureKey = key;
+        this.secureSystem = secureSystem;
+	this.secureKey = key;
     }
 
     public String getSecureKey() {

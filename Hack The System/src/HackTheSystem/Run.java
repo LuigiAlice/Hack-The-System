@@ -14,14 +14,9 @@ public class Run {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
-        // TODO code application logic here
-
-        Hacker andi = new Hacker();
         
-        andi.hack();
-		
-		andi.hack();
-		
+        System.out.println("Starte die Klasse HackerTest!");
+           
     }
     
 }
