@@ -5,7 +5,6 @@
  */
 package HackTheSystem.bot;
 
-import HackTheSystem.securesystem.Firewall;
 import HackTheSystem.virus.Virus;
 
 /**

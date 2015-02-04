@@ -69,6 +69,13 @@ public class HackerTest {
             BNet.addBot(bot);
         } 
 
+        // Auf Ereignis anmelden
+        BNet.OnFirewallHacked((Bot bot, Object... args) -> {
+                String key = (String) args[0];
+                System.out.println("Bot " + bot + " hacked firewall with key " + key);
+             }
+         );
+        
         for (Firewall wall : sparkasse.getFirewalls())
         {
             Thread t = BNet.hack(wall);

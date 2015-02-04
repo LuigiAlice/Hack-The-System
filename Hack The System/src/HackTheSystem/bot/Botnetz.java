@@ -5,6 +5,7 @@
  */
 package HackTheSystem.bot;
 
+import HackTheSystem.Event;
 import HackTheSystem.securesystem.Firewall;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,22 @@ public class Botnetz  {
     List<Bot> bots = new ArrayList<>();
     int attackInterval = 1000;
     private final String name;
+    private Event<Bot> evt;
 
     public Botnetz(String name) {
         this.name = name;
     }
 
+    /**
+     * Event wird ausgelöst, wenn Firewall gehackt wurde
+     * @param evt
+     */
+    public void OnFirewallHacked(Event<Bot> evt)
+    {
+        if (this.evt != null) throw new RuntimeException("Callback for Event OnFirewallHacked already defined!");
+        this.evt = evt;
+    }
+    
     public String getName() {
         return name;
     }
@@ -50,11 +62,12 @@ public class Botnetz  {
     /**
      * Angriff einer Firewall. Alle Bots im Netz greifen der Reihe nach an.
      * Dies gilt als quasi paralleler Angriff
-     * @param wall
-     * @throws InterruptedException 
+     * @param wall 
+     * @return  
      */     
     public Thread hack(Firewall wall)
     {
+        final Event<Bot> evt = this.evt;
         Thread t = new Thread()
         {
             @Override
@@ -70,8 +83,8 @@ public class Botnetz  {
                         botKey = bot.getVirus().attack(wall);
                         if(botKey.equals(secureKey))
                         {
-                            wall.hacked(botKey);
                             hacked = true;
+                            if (evt != null) evt.eventFired(bot, botKey);   // Ereignis auslösen
                             for(Bot botInit : bots)
                             {
                                botInit.getVirus().init();

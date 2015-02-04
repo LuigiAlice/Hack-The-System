@@ -26,9 +26,4 @@ public class Firewall {
         return secureKey;
     }
 
-    
-    public void hacked(String botKey)
-    {
-	System.out.println("hacked: "+botKey);
-    }
 }
