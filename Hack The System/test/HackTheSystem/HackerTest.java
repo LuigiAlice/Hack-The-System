@@ -51,6 +51,7 @@ public class HackerTest {
 
     /**
      * Test of hack method, of class Hacker.
+     * @throws java.lang.Exception
      */
     @Test
     public void testSparkasseHack() throws Exception {
