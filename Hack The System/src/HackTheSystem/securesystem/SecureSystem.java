@@ -28,9 +28,6 @@ abstract class SecureSystem {
         this.BotCoins += BotCoins;
     }
     
-    public void getResources()
-    {
-    }
 
     public void setGeknackt(boolean geknackt) {
         this.geknackt = geknackt;

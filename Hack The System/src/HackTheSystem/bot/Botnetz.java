@@ -70,8 +70,12 @@ public class Botnetz  {
                         botKey = bot.getVirus().attack(wall);
                         if(botKey.equals(secureKey))
                         {
-                            hacked = true;
                             wall.hacked(botKey);
+                            hacked = true;
+                            for(Bot botInit : bots)
+                            {
+                               botInit.getVirus().init();
+                            }
                             break;
                         }
                         System.out.println(botKey);
