@@ -12,23 +12,29 @@ package HackTheSystem;
 public class Hacker {
     
     private double BotCoins = 0;
-    private double InnovationPoints = 0;
-    
+    private double Innovation = 0;
+    private double Energy = 0;
     
     public double getBotCoins() {
         return BotCoins;
     }
-
     public void addBotCoins(double BotCoins) {
         this.BotCoins += BotCoins;
     }
+    public double getEnergy() {
+        return Energy;
+    }
+    public void addEnergy(double Energy) {
+        this.Energy += Energy;
+    }
+    
 
-    public double getInnovationPoints() {
-        return InnovationPoints;
+    public double getInnovation() {
+        return Innovation;
     }
 
-    public void addInnovationPoints(double InnovationPoints) {
-        this.InnovationPoints += InnovationPoints;
+    public void addInnovation(double InnovationPoints) {
+        this.Innovation += InnovationPoints;
     }
     
     
