@@ -5,7 +5,8 @@
  */
 package HackTheSystem.bot;
 
-import HackTheSystem.Event;
+import HackTheSystem.Event2Args;
+import HackTheSystem.exceptions.NoBotsException;
 import HackTheSystem.securesystem.Firewall;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Botnetz  {
     List<Bot> bots = new ArrayList<>();
     int attackInterval = 1000;
     private final String name;
-    private Event<Bot> evt;
+    private Event2Args<Bot, String> evt;
 
     public Botnetz(String name) {
         this.name = name;
@@ -30,7 +31,7 @@ public class Botnetz  {
      * Event wird ausgelöst, wenn Firewall gehackt wurde
      * @param evt
      */
-    public void OnFirewallHacked(Event<Bot> evt)
+    public void OnFirewallHacked(Event2Args<Bot, String> evt)
     {
         if (this.evt != null) throw new RuntimeException("Callback for Event OnFirewallHacked already defined!");
         this.evt = evt;
@@ -67,7 +68,9 @@ public class Botnetz  {
      */     
     public Thread hack(Firewall wall)
     {
-        final Event<Bot> evt = this.evt;
+        if (bots.isEmpty()) throw new NoBotsException("Botnetz " + this + " hat keine Bots!");
+        
+        final Event2Args<Bot, String> evt = this.evt;
         Thread t = new Thread()
         {
             @Override
@@ -85,7 +88,7 @@ public class Botnetz  {
                         {
                             hacked = true;
                             if (evt != null) evt.eventFired(bot, botKey);   // Ereignis auslösen
-                            for(Bot botInit : bots)
+                            for (Bot botInit : bots)
                             {
                                botInit.getVirus().init();
                             }

@@ -12,8 +12,16 @@ import HackTheSystem.virus.Virus;
  * @author Roolez
  */
 public class Bot {
-    private final Botnetz botnetz;
+    private Botnetz botnetz;
     Virus virus;
+    int maxPattern; //länge des maximal knackbarem code
+    int processor; // Leistung des Bots
+
+    
+    public Bot() {
+    }
+    
+    
     
     /**
      *
@@ -26,18 +34,24 @@ public class Bot {
         this.virus = virus;
     }
     
-   
-    
-
     public Botnetz getBotnetz() {
         return botnetz;
     }
 
-    
-    public Virus getVirus() {
-        return virus;
+    public void setBotnetz(Botnetz botnetz) {
+        this.botnetz = botnetz;
     }
     
     
 
+    public Virus getVirus() {
+        return virus;
+    }
+
+    public void setVirus(Virus virus) {
+        this.virus = virus;
+    }
+    
+    
+    
 }

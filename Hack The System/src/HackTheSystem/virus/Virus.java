@@ -18,6 +18,8 @@ public class Virus {
     int raise; //Faktor um wie viel die einahmen im erfolgsfall
     int hidden; //Enddeckbarkeit
     int spread; //Ausbreitung
+    int minProzessor; //vorraussetzung des bots
+    
     long numOfAttk;
     protected String keyPattern = "*";
     Random rnd = new Random();  

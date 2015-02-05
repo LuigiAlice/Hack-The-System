@@ -10,9 +10,9 @@ package HackTheSystem;
  * @author Luigi
  * @param <T>
  */
-public interface Event<T> {
+public interface Event2Args<T1, T2> {
     
-    public void eventFired(T sender, Object... args);
+    public void eventFired(T1 sender, T2 arg2);
     
 }
 

@@ -6,6 +6,7 @@
 package HackTheSystem;
 
 import HackTheSystem.bot.Bot;
+import HackTheSystem.bot.Botfarm;
 import HackTheSystem.bot.Botnetz;
 import HackTheSystem.securesystem.Bank;
 import HackTheSystem.securesystem.Firewall;
@@ -41,7 +42,7 @@ public class HackerTest {
         
         andi = new Hacker();
         andi.addBotCoins(10000);        // Geld für Bot eroberung
-        andi.addInnovationPoints(20);   // 20 Entwicklungspunkte für Viren
+        andi.addInnovation(20);   // 20 Entwicklungspunkte für Viren
     }
     
     @After
@@ -64,15 +65,21 @@ public class HackerTest {
         Botnetz BNet = new Botnetz("B***tnet/2015");     
         BNet.setAttackInterval(100);
         
-        for(int i=0; i < 1; i++)
+        Botfarm farm = new Botfarm(1000);
+        
+        for(int i=0; i < 3; i++)
         {
-            Bot bot = new Bot(BNet, new NRVirus("*******"));
-            BNet.addBot(bot);
+            Bot bot = farm.getNextBot(andi, 200); // Andi ist geizig und zahlt nur 200 anstatt 1000 -> Risiko von 200:1000 für Erfolg!
+            if (bot != null)    // Kauf geglückt
+            {
+                System.out.println(bot + " gekauft.");
+                bot.setVirus(new NRVirus("*******"));
+                BNet.addBot(bot);
+            }
         } 
 
         // Auf Ereignis anmelden
-        BNet.OnFirewallHacked((Bot bot, Object... args) -> {
-                String key = (String) args[0];
+        BNet.OnFirewallHacked((Bot bot, String key) -> {
                 System.out.println("Bot " + bot + " hacked firewall with key " + key);
              }
          );
