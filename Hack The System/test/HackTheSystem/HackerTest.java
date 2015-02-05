@@ -51,6 +51,7 @@ public class HackerTest {
 
     /**
      * Test of hack method, of class Hacker.
+     * @throws java.lang.Exception
      */
     @Test
     public void testSparkasseHack() throws Exception {
@@ -58,17 +59,24 @@ public class HackerTest {
 
         Bank sparkasse = new Bank();
         sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));  
-        sparkasse.addFirewall(new Firewall(sparkasse, "0101100110101010"));           
+        sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));           
         
         Botnetz BNet = new Botnetz("B***tnet/2015");     
-        BNet.setAttackInterval(500);
+        BNet.setAttackInterval(100);
         
         for(int i=0; i < 1; i++)
         {
-            Bot bot = new Bot(BNet, new NRVirus("****************"));
+            Bot bot = new Bot(BNet, new NRVirus("*******"));
             BNet.addBot(bot);
         } 
 
+        // Auf Ereignis anmelden
+        BNet.OnFirewallHacked((Bot bot, Object... args) -> {
+                String key = (String) args[0];
+                System.out.println("Bot " + bot + " hacked firewall with key " + key);
+             }
+         );
+        
         for (Firewall wall : sparkasse.getFirewalls())
         {
             Thread t = BNet.hack(wall);
@@ -77,21 +85,21 @@ public class HackerTest {
 		           
     }
     
-    @Test
-    public void testVirusSchwach() throws Exception {
-        try
-        {
-        Bank sparkasse = new Bank(); 
-        sparkasse.addFirewall(new Firewall(sparkasse, "0101100110101010")); 
-        Botnetz BNet = new Botnetz("B***tnet/2015");   
-        Bot bot = new Bot(BNet, new NRVirus("****"));
-        BNet.addBot(bot);
-        BNet.hack(sparkasse.getFirewalls().get(0));
-        }
-        catch(Exception e)
-        {
-            assertTrue(e.getMessage().contains("Virus ist zu schwach"));
-        }
-    }
+//    @Test
+//    public void testVirusSchwach() throws Exception {
+//        try
+//        {
+//        Bank sparkasse = new Bank(); 
+//        sparkasse.addFirewall(new Firewall(sparkasse, "0101100110101010")); 
+//        Botnetz BNet = new Botnetz("B***tnet/2015");   
+//        Bot bot = new Bot(BNet, new NRVirus("****"));
+//        BNet.addBot(bot);
+//        BNet.hack(sparkasse.getFirewalls().get(0));
+//        }
+//        catch(Exception e)
+//        {
+//            assertTrue(e.getMessage().contains("Virus ist zu schwach"));
+//        }
+//    }
     
 }

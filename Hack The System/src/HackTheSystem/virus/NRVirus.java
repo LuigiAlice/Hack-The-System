@@ -21,6 +21,12 @@ public class NRVirus extends Virus{
         super(keyPattern);
     }
     
+    @Override
+    public void init()
+    {
+        numOfAttk = 1;
+        triedKeys = new ArrayList<>();
+    }
      
     @Override
     public String getNextKey(Firewall wall)
