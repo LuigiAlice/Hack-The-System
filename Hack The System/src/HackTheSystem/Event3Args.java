@@ -8,11 +8,13 @@ package HackTheSystem;
 /**
  *
  * @author Luigi
- * @param <T>
+ * @param <T1>
+ * @param <T2>
+ * @param <T3>
  */
-public interface Event<T> {
+public interface Event3Args<T1, T2, T3> {
     
-    public void eventFired(T sender, Object... args);
+    public void eventFired(T1 sender, T2 arg2, T3 arg3);
     
 }
 

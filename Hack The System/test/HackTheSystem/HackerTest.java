@@ -71,8 +71,7 @@ public class HackerTest {
         } 
 
         // Auf Ereignis anmelden
-        BNet.OnFirewallHacked((Bot bot, Object... args) -> {
-                String key = (String) args[0];
+        BNet.OnFirewallHacked((Bot bot, String key) -> {
                 System.out.println("Bot " + bot + " hacked firewall with key " + key);
              }
          );
