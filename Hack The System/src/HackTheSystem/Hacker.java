@@ -20,6 +20,7 @@ public class Hacker {
     }
     public void addBotCoins(double BotCoins) {
         this.BotCoins += BotCoins;
+        System.out.println("BotCoins: " + this.BotCoins);
     }
     public double getEnergy() {
         return Energy;

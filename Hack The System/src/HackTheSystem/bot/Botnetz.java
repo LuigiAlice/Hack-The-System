@@ -6,6 +6,7 @@
 package HackTheSystem.bot;
 
 import HackTheSystem.Event2Args;
+import HackTheSystem.exceptions.NoBotsException;
 import HackTheSystem.securesystem.Firewall;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,8 @@ public class Botnetz  {
      */     
     public Thread hack(Firewall wall)
     {
+        if (bots.isEmpty()) throw new NoBotsException("Botnetz " + this + " hat keine Bots!");
+        
         final Event2Args<Bot, String> evt = this.evt;
         Thread t = new Thread()
         {
