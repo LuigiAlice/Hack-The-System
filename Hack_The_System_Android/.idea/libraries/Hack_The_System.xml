@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Hack_The_System">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hts/libs/Hack_The_System.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
