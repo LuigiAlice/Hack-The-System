@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Luigi
+ * @author Luigi ist doof
  */
 public class HackerTest {
     
@@ -79,10 +79,13 @@ public class HackerTest {
         } 
 
         // Auf Ereignis anmelden
-        BNet.OnFirewallHacked((Bot bot, String key) -> {
-                System.out.println("Bot " + bot + " hacked firewall with key " + key);
-             }
-         );
+         BNet.OnFirewallHacked(new Event2Args<Bot, String>() {
+                  @Override
+                  public void eventFired(Bot bot, String key) {
+                      System.out.println("Bot " + bot + " hacked firewall with key " + key);
+                  }
+              }
+            );
         
         for (Firewall wall : sparkasse.getFirewalls())
         {
