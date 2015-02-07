@@ -69,7 +69,7 @@ public class HackerTest {
         
         for(int i=0; i < 3; i++)
         {
-            Bot bot = farm.getNextBot(andi, 200); // Andi ist geizig und zahlt nur 200 anstatt 1000 -> Risiko von 200:1000 für Erfolg!
+            Bot bot = farm.getNextBot(andi, 2000); // Andi ist geizig und zahlt nur 200 anstatt 1000 -> Risiko von 200:1000 für Erfolg!
             if (bot != null)    // Kauf geglückt
             {
                 System.out.println(bot + " gekauft.");
