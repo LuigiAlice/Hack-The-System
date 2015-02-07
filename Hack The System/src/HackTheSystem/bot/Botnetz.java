@@ -66,7 +66,7 @@ public class Botnetz  {
      * @param wall 
      * @return  
      */     
-    public Thread hack(Firewall wall)
+    public Thread hack(final Firewall wall)
     {
         if (bots.isEmpty()) throw new NoBotsException("Botnetz " + this + " hat keine Bots!");
         
