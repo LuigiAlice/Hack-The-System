@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Luigi\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-8d76cd67d49e3b2c4abce835ff90375b3f26ec42.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-a72f76f1741ee01bb7ca41d7c47afcbfcc294e02.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\libs\Hack_The_System.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e9b8679cd330031ca540f1a799d5fc8f37dec130">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\Hack_The_System-fc79183f6da24cbc65db8c54a55c81373219fd03.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\classes-2a1cc67c112cadd53f62a792f4d4c0cdce6400b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-5badadcb4e4fda4bf01a67331706e7bc9930c08d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Luigi\Desktop\botattack\Hack_The_System_Android\hts\build\intermediates\pre-dexed\debug\classes-d055f62155f635fd151a7179e4e26247a9ceb70d.jar" />
+    </item>
+
+</items>
