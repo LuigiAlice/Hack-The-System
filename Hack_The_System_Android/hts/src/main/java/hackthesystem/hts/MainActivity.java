@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -62,6 +63,12 @@ public class MainActivity extends Activity {
     }
 
     //--------------own code -----------------------------------------------------------
+    public void changeActivity(final View v)
+    {
+        Intent intent = new Intent(v.getContext(), MainActivity2.class);
+        startActivityForResult(intent, 0);
+
+    }
 
     public void buttonOnClick(final View v) {
         Hacker andi;
