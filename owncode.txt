@@ -1,0 +1,62 @@
+ public void buttonOnClick(final View v) {
+        Hacker andi;
+
+
+            andi = new Hacker();
+            andi.addBotCoins(10000);        // Geld für Bot eroberung
+            andi.addInnovation(20);   // 20 Entwicklungspunkte für Viren
+
+
+
+
+
+
+        /**
+         * Test of hack method, of class Hacker.
+         * @throws java.lang.Exception
+         */
+
+            Bank sparkasse = new Bank();
+            sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));
+            sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));
+
+            Botnetz BNet = new Botnetz("B***tnet/2015");
+            BNet.setAttackInterval(100);
+
+            Botfarm farm = new Botfarm(1000);
+
+            for(int i=0; i < 3; i++)
+            {
+                Bot bot = farm.getNextBot(andi, 2000); // Andi ist geizig und zahlt nur 200 anstatt 1000 -> Risiko von 200:1000 für Erfolg!
+                if (bot != null)    // Kauf geglückt
+                {
+                    System.out.println(bot + " gekauft.");
+                    bot.setVirus(new NRVirus("*******"));
+                    BNet.addBot(bot);
+                }
+            }
+
+        final TextView text1 = (TextView)this.findViewById(R.id.display);
+        text1.append("---------------------------------");
+            // Auf Ereignis anmelden
+            BNet.OnFirewallHacked(new Event2Args<Bot, String>() {
+                  @Override
+                  public void eventFired(Bot bot, String key) {
+                      //System.out.println("Bot " + bot + " hacked firewall with key " + key);
+                      text1.append("Bot " + bot + " hacked firewall with key " + key);
+                  }
+              }
+            );
+
+            for (Firewall wall : sparkasse.getFirewalls())
+            {
+                Thread t = BNet.hack(wall);
+                try {
+                    t.join(); // warten, bis Thread fertig ist
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+    }
+
+    //-------------------------------end of own code------------------------------------
