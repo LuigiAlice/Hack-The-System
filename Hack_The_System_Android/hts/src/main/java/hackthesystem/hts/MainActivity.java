@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -109,13 +110,22 @@ public class MainActivity extends Activity {
             }
 
         final TextView text1 = (TextView)this.findViewById(R.id.display);
+
+        final Activity me = this;
+
         text1.append("Bot ");
             // Auf Ereignis anmelden
             BNet.OnFirewallHacked(new Event2Args<Bot, String>() {
                   @Override
-                  public void eventFired(Bot bot, String key) {
+                  public void eventFired(final Bot bot, final String key) {
                       //System.out.println("Bot " + bot + " hacked firewall with key " + key);
-                      text1.append("Bot " + bot + " hacked firewall with key " + key);
+                       me.runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               text1.append("Bot " + bot + " hacked firewall with key " + key);
+                           }
+                       });
+
                   }
               }
             );
