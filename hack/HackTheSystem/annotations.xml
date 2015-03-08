@@ -1,0 +1,5 @@
+<root>
+    <item name='HackTheSystem.Hacker'>
+        <annotation name='org.jetbrains.annotations.Nullable' />
+    </item>
+</root>

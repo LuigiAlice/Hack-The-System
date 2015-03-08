@@ -13,35 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/btnStart"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="buttonOnClick" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/display"
-        android:layout_above="@+id/btnStart"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/section_label"
-        android:editable="false"
-        android:enabled="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_below="@+id/display"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="changeActivity" />
+        android:id="@+id/editText"
+        android:layout_marginTop="98dp"
+        android:text="HACK THE SYSTEM"
+        android:layout_below="@+id/section_label"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

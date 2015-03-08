@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
@@ -26,7 +27,11 @@ import HackTheSystem.exceptions.*;
 import HackTheSystem.virus.*;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements Listeners.OnFragmentInteractionListener {
+
+    public static Hacker andi = new Hacker();
+    public static Botnetz BNet = new Botnetz("B***tnet/2015");
+    public static Botfarm farm = new Botfarm(1000);
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -58,30 +63,18 @@ public class MainActivity extends Activity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
+        init();
 
 
     }
-
     //--------------own code -----------------------------------------------------------
-    public void changeActivity(final View v)
-    {
-        Intent intent = new Intent(v.getContext(), MainActivity2.class);
-        startActivityForResult(intent, 0);
 
-    }
-
-    public void buttonOnClick(final View v) {
-        Hacker andi;
+    final Activity me = this;
 
 
-            andi = new Hacker();
-            andi.addBotCoins(10000);        // Geld für Bot eroberung
-            andi.addInnovation(20);   // 20 Entwicklungspunkte für Viren
-
-
-
-
+    public void init() {
+        andi.addBotCoins(10000);        // Geld für Bot eroberung
+        andi.addInnovation(20);   // 20 Entwicklungspunkte für Viren
 
 
         /**
@@ -89,57 +82,10 @@ public class MainActivity extends Activity {
          * @throws java.lang.Exception
          */
 
-            Bank sparkasse = new Bank();
-            sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));
-            sparkasse.addFirewall(new Firewall(sparkasse, "0101100"));
-
-            Botnetz BNet = new Botnetz("B***tnet/2015");
-            BNet.setAttackInterval(100);
-
-            Botfarm farm = new Botfarm(1000);
-
-            for(int i=0; i < 3; i++)
-            {
-                Bot bot = farm.getNextBot(andi, 2000); // Andi ist geizig und zahlt nur 200 anstatt 1000 -> Risiko von 200:1000 für Erfolg!
-                if (bot != null)    // Kauf geglückt
-                {
-                    System.out.println(bot + " gekauft.");
-                    bot.setVirus(new NRVirus("*******"));
-                    BNet.addBot(bot);
-                }
-            }
-
-        final TextView text1 = (TextView)this.findViewById(R.id.display);
-
-        final Activity me = this;
-
-        text1.append("Bot ");
-            // Auf Ereignis anmelden
-            BNet.OnFirewallHacked(new Event2Args<Bot, String>() {
-                  @Override
-                  public void eventFired(final Bot bot, final String key) {
-                      //System.out.println("Bot " + bot + " hacked firewall with key " + key);
-                       me.runOnUiThread(new Runnable() {
-                           @Override
-                           public void run() {
-                               text1.append("Bot " + bot + " hacked firewall with key " + key);
-                           }
-                       });
-
-                  }
-              }
-            );
-
-            for (Firewall wall : sparkasse.getFirewalls())
-            {
-                Thread t = BNet.hack(wall);
-                try {
-                    t.join(); // warten, bis Thread fertig ist
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
     }
+
+
+
 
     //-------------------------------end of own code------------------------------------
     @Override
@@ -162,7 +108,11 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -178,13 +128,34 @@ public class MainActivity extends Activity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            if (position == 0)
+            {
+                return PlaceholderFragment.newInstance(position + 1);
+            }
+            else if (position == 1)
+            {
+                return OverviewFragment.newInstance("OverviewFragment", "OverviewFragment");
+            }
+            else if (position == 2)
+            {
+                return BotlistFragment.newInstance("BotlistFragment", "BotlistFragment");
+            }
+            else if (position == 3)
+            {
+                return AttackTerminalFragment.newInstance("AttackTerminalFragment", "AttackTerminalFragment");
+            }
+            else
+            {
+                return PlaceholderFragment.newInstance(position + 1);
+            }
+
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -236,5 +207,8 @@ public class MainActivity extends Activity {
             return rootView;
         }
     }
+
+
+
 
 }
